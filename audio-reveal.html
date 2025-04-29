@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Aptitude Question with Audio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-12">
+<div class="bg-white shadow-xl rounded-xl p-8 max-w-7xl w-full space-y-6" aria-labelledby="quiz-title">
+    <h1 id="quiz-title" class="text-2xl font-semibold pt-2 mb-3">Audio Reveal Format</h1>
+  
+  <!-- Navigation Instructions Grid -->
+<div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-md" aria-label="Navigation Instructions">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    
+    <!-- Mouse Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="mouse-pointer-click" class="h-5 w-5 text-blue-400" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-blue-800">Mouse Users</h3>
+        <p class="text-sm text-blue-700 mt-1">Click the <strong>“Hear Audio”</strong> button beside each section to play the audio.</p>
+      </div>
+    </div>
+
+    <!-- Keyboard Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="keyboard" class="h-5 w-5 text-blue-400" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-blue-800">Keyboard Users</h3>
+        <ul class="text-sm text-blue-700 mt-1 list-disc list-inside">
+          <li>Press <kbd class="px-1.5 py-0.5 bg-gray-200 rounded font-mono text-xs">/</kbd> to focus the first “Hear Audio” button</li>
+          <li>Use <kbd class="px-1.5 py-0.5 bg-gray-200 rounded font-mono text-xs">←</kbd> / <kbd class="px-1.5 py-0.5 bg-gray-200 rounded font-mono text-xs">→</kbd> to move between buttons</li>
+          <li>Press <kbd class="px-1.5 py-0.5 bg-gray-200 rounded font-mono text-xs">Enter</kbd> or <kbd class="px-1.5 py-0.5 bg-gray-200 rounded font-mono text-xs">Space</kbd> to play audio</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screen Reader Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="ear" class="h-5 w-5 text-blue-400" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-blue-800">Screen Reader Users</h3>
+        <p class="text-sm text-blue-700 mt-1">The full text content of each question is provided in a separate accessible element for screen readers.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- Hidden full text for better accessibility -->
+  <div class="sr-only">
+    A train leaves station A traveling west at 70 kilometers per hour while another train leaves 
+    station B, which is 450 kilometers east of station A, traveling east at 90 kilometers per hour. 
+    At the same time, a bird flying at 120 kilometers per hour starts from station A and flies toward station B. The bird flies back and forth between the two trains, turning around each time it reaches one, until the trains meet. What is the total distance flown?
+  </div>
+
+  <div class="relative mb-8">
+    <span class="absolute top-0 h-full w-1 bg-gray-300 rounded-full"></span>
+    <p class="text-2xl text-gray-700 leading-relaxed pl-6" aria-hidden="true">
+      A train leaves station A traveling west at 
+      <button 
+      tabindex="0"
+      id="audio-1"
+      onclick="speakAnswer('70 km/h')"
+      onkeydown="handleKeydown(event, 1)"
+      class="inline-flex items-center space-x-2 text-orange-700 bg-orange-100 px-2 py-1 rounded-full hover:bg-orange-200 focus:ring-2 focus:ring-orange-500 focus:outline-none transition cursor-pointer">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
+        <span class="text-sm">Hear Audio</span>
+      </button>
+      while another train leaves station B, which is 
+      <button 
+      tabindex="0"
+      id="audio-2"
+      onclick="speakAnswer('450 km')"
+      onkeydown="handleKeydown(event, 2)"
+      class="inline-flex items-center space-x-2 text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full hover:bg-emerald-200 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
+        <span class="text-sm">Hear Audio</span>
+      </button>
+      east of station A, traveling east at 
+      <button 
+      tabindex="0"
+      id="audio-3"
+      onclick="speakAnswer('90 km/h')"
+      onkeydown="handleKeydown(event, 3)"
+      class="inline-flex items-center space-x-2 text-sky-700 bg-sky-100 px-2 py-1 rounded-full hover:bg-sky-200 focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
+        <span class="text-sm">Hear Audio</span>
+      </button>. 
+      At the same time, a bird flying at 
+      <button 
+      tabindex="0"
+      id="audio-4"
+      onclick="speakAnswer('120 km/h')"
+      onkeydown="handleKeydown(event, 4)"
+      class="inline-flex items-center space-x-2 text-purple-700 bg-purple-100 px-2 py-1 rounded-full hover:bg-purple-200 focus:ring-2 focus:ring-purple-500 focus:outline-none transition">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
+        <span class="text-sm">Hear Audio</span>
+      </button>
+      starts from station A and flies toward station B. The bird flies back and forth between the two trains, turning around each time it reaches one, until the trains meet. What is the total distance flown?
+    </p>
+  </div>
+  
+  <!-- Audio status indicator (hidden) -->
+  <div id="audio-status" class="sr-only" aria-live="polite"></div>
+  
+  <!-- Answer Options - Two Columns -->
+  <div class="mt-8">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">Choose the correct option:</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 hover:bg-indigo-50 hover:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+        <input type="radio" name="answer" value="450" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+        <span class="ml-3 text-gray-700">450 km</span>
+      </label>
+      
+      <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 hover:bg-indigo-50 hover:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+        <input type="radio" name="answer" value="540" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+        <span class="ml-3 text-gray-700">540 km</span>
+      </label>
+      
+      <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 hover:bg-indigo-50 hover:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+        <input type="radio" name="answer" value="600" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+        <span class="ml-3 text-gray-700">600 km</span>
+      </label>
+      
+      <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 hover:bg-indigo-50 hover:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+        <input type="radio" name="answer" value="720" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+        <span class="ml-3 text-gray-700">720 km</span>
+      </label>
+      
+    
+      
+     
+    </div>
+  </div>
+  
+  <!-- Feedback area (hidden initially) -->
+  <div id="feedback" class="mt-6 p-4 rounded-md hidden" aria-live="polite"></div>
+  
+  <!-- Submit button -->
+  <div class="mt-6">
+    <button id="submit-answer" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+      Submit Answer
+    </button>
+  </div>
+  
+</div>
+
+<script>
+// Total number of audio elements
+const totalAudioElements = 4;
+
+// Current audio element
+let currentAudioElement = 1;
+
+// Set up keyboard shortcut to focus on the first audio element
+document.addEventListener('keydown', function(e) {
+  if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+    e.preventDefault();
+    document.getElementById('audio-1').focus();
+    updateAudioStatus('Focused on first audio element');
+  }
+});
+
+// Function to navigate between audio elements
+function navigateAudio(direction) {
+  let newIndex;
+  
+  if (direction === 'next') {
+    newIndex = currentAudioElement < totalAudioElements ? currentAudioElement + 1 : 1;
+  } else {
+    newIndex = currentAudioElement > 1 ? currentAudioElement - 1 : totalAudioElements;
+  }
+  
+  // Update current element
+  currentAudioElement = newIndex;
+  
+  // Focus on the element
+  const audioElement = document.getElementById(`audio-${newIndex}`);
+  audioElement.focus();
+  
+  // Provide feedback
+  updateAudioStatus(`Moved to audio element ${newIndex}`);
+}
+
+// Handle keydown events for all audio elements
+function handleKeydown(event, audioIndex) {
+  // Update current element
+  currentAudioElement = audioIndex;
+  
+  // Play on Enter or Space
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    
+    // Determine which audio to play based on the index
+    if (audioIndex === 1) {
+      speakAnswer('70 km/h');
+    } else if (audioIndex === 2) {
+      speakAnswer('450 km');
+    } else if (audioIndex === 3) {
+      speakAnswer('90 km/h');
+    } else if (audioIndex === 4) {
+      speakAnswer('120 km/h');
+    }
+  }
+  
+  // Navigate with arrow keys
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    navigateAudio('prev');
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    navigateAudio('next');
+  }
+}
+
+function updateAudioStatus(message) {
+  const statusElement = document.getElementById('audio-status');
+  statusElement.textContent = message;
+  
+  // No need to show/hide since it's always sr-only
+}
+
+function getBestVoice() {
+  const voices = speechSynthesis.getVoices();
+  const platform = navigator.platform.toLowerCase();
+  if (platform.includes("mac")) {
+    const samantha = voices.find(v => v.name.includes("Samantha"));
+    if (samantha) return samantha;
+  }
+  if (platform.includes("win")) {
+    const mark = voices.find(v => v.name.includes("Microsoft Mark"));
+    if (mark) return mark;
+  }
+  return voices.find(v => v.lang.startsWith("en")) || voices[0];
+}
+
+function speakAnswer(text) {
+  // Cancel any ongoing speech
+  window.speechSynthesis.cancel();
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.voice = getBestVoice();
+  utterance.rate = 0.9; // Slightly slowed down for clarity
+  
+  // Update status for screen readers only
+  updateAudioStatus(`Playing: ${text}`);
+  
+  // Speak the text
+  speechSynthesis.speak(utterance);
+}
+
+// Handle submit button
+document.getElementById('submit-answer').addEventListener('click', function() {
+  const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+  const feedbackArea = document.getElementById('feedback');
+  
+  if (!selectedAnswer) {
+    feedbackArea.textContent = 'Please select an answer before submitting.';
+    feedbackArea.classList.remove('hidden', 'bg-green-50');
+    feedbackArea.classList.add('bg-red-50', 'border-l-4', 'border-red-400', 'text-red-700');
+    return;
+  }
+  
+  // Check if answer is correct (540 km is the correct answer for this problem)
+  const isCorrect = selectedAnswer.value === '540';
+  
+  if (isCorrect) {
+    feedbackArea.textContent = 'Correct! Well done!';
+    feedbackArea.classList.remove('hidden', 'bg-red-50');
+    feedbackArea.classList.add('bg-green-50', 'border-l-4', 'border-green-400', 'text-green-700');
+  } else {
+    feedbackArea.textContent = 'Incorrect. Try again.';
+    feedbackArea.classList.remove('hidden', 'bg-green-50');
+    feedbackArea.classList.add('bg-red-50', 'border-l-4', 'border-red-400', 'text-red-700');
+  }
+});
+
+// Ensure voices are loaded
+speechSynthesis.onvoiceschanged = () => {
+  getBestVoice();
+};
+
+lucide.createIcons();
+</script>
+</body>
+</html>

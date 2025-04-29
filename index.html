@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Question Formats</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(209, 213, 219, 0.5);
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card:hover {
+        transform: none;
+      }
+    }
+    .link-button {
+      transition: all 0.2s ease;
+    }
+    .link-button:hover {
+      transform: translateY(-2px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .link-button:hover {
+        transform: none;
+      }
+    }
+    .how-it-works-step {
+      position: relative;
+    }
+    .how-it-works-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 70px;
+      right: -25px;
+      width: 50px;
+      height: 2px;
+      background-color: #e5e7eb;
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .how-it-works-step:not(:last-child)::after {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Accessibility skip link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white focus:text-blue-600 focus:z-50">
+    Skip to main content
+  </a>
+
+  <!-- Particle background -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- Main content -->
+  <main id="main-content" class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
+    <header class="mb-10 mt-5 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 text-indigo-900">
+        Next-Gen Question Formats to Outsmart AI
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 ">
+        Creative methods to safeguard exam integrity and shield hidden data from language models
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
+      <!-- Audio Reveal Card -->
+      <div class="card rounded-xl overflow-hidden shadow-lg p-6 flex flex-col justify-between h-full">
+        <div>
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-volume-up text-2xl text-purple-600"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-purple-900 mb-2">Audio Reveal Format</h2>
+          <p class="text-gray-600 mb-6">
+            Question format where key numerical values are hidden behind audio elements, preventing AI LLMs from accessing critical data while allowing human users to hear the information.
+          </p>
+        </div>
+        <div class="flex items-center justify-center space-x-4">
+          <a href="audio-reveal.html" class="link-button inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+            <span>View Example</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Data Reveal Card -->
+      <div class="card rounded-xl overflow-hidden shadow-lg p-6 flex flex-col justify-between h-full">
+        <div>
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-eye text-2xl text-blue-600"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-blue-900 mb-2">Data Reveal Format</h2>
+          <p class="text-gray-600 mb-6">
+            Interactive format where critical numerical values are hidden behind hover or click interactions, making it impossible for AI systems to scrape the data while remaining accessible to humans.
+          </p>
+        </div>
+        <div class="flex items-center justify-center space-x-4">
+          <a href="data-reveal.html" class="link-button inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <span>View Example</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="mt-16 max-w-4xl w-full">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-5 rounded-lg shadow">
+          <div class="text-indigo-500 mb-2">
+            <i class="fas fa-eye-slash text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Context Hiding</h3>
+          <p class="text-gray-600 text-sm">
+            Prevents AI LLMs from reading hidden values while allowing human users to access them naturally.
+          </p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow">
+          <div class="text-yellow-500 mb-2">
+            <i class="fas fa-shield-alt text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Test Integrity</h3>
+          <p class="text-gray-600 text-sm">
+            Protects against cheating by making it difficult for candidates to copy or extract questions for AI analysis.
+          </p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow">
+          <div class="text-green-500 mb-2">
+            <i class="fas fa-universal-access text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Accessibility</h3>
+          <p class="text-gray-600 text-sm">
+            Designed with keyboard navigation and screen reader support to ensure all users can access content.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section (New) -->
+    <section class="mt-16 max-w-4xl w-full">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">How It Works: The Technical Explanation</h2>
+      <div class="bg-white rounded-xl p-6 shadow-md">
+        <p class="text-gray-700 mb-6">
+          Our formats specifically counter the increasingly common practice of students taking screenshots of exam questions to feed into AI tools. Here's how they defeat both direct scraping and screenshot-based cheating:
+        </p>
+        
+        <!-- Audio Format Explanation -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-800 mb-3 flex items-center">
+            <i class="fas fa-volume-up text-purple-600 mr-2"></i>
+            Audio Format: Defeating OCR and Screenshots
+          </h3>
+          <div class="bg-purple-50 rounded-lg p-4 border border-purple-100">
+            <ol class="text-left text-gray-700 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-purple-200 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                <span><strong>Screenshot-Proof:</strong> When a student takes a screenshot, the critical numbers aren't visible in the image—only the audio buttons appear, making OCR impossible.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-purple-200 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                <span><strong>Client-Side Generation:</strong> The audio is generated in real-time within the user's browser using speech synthesis, so there's no audio file for AI to extract or process.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-purple-200 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                <span><strong>Context Isolation:</strong> Without the numerical values, AI cannot understand the complete question context, making it impossible to provide accurate answers.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+        
+        <!-- Visual Format Explanation -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center">
+            <i class="fas fa-eye text-blue-600 mr-2"></i>
+            Data Reveal Format: Immune to AI Analysis
+          </h3>
+          <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+            <ol class="text-left text-gray-700 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-blue-200 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                <span><strong>Transient Display:</strong> Values only appear briefly on hover/click and then disappear, making them difficult to capture in screenshots and forcing students to manually note them down.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-200 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                <span><strong>Tooltip Architecture:</strong> The hidden values exist in a separate DOM layer that isn't captured by simple OCR or screen readers in their default state.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-200 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                <span><strong>Multiple Interactions Required:</strong> By forcing multiple separate interactions to reveal all values, we create a process that's tedious to document for AI and disrupts the context flow.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+        
+        <!-- Accessibility Explanation -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-green-800 mb-3 flex items-center">
+            <i class="fas fa-universal-access text-green-600 mr-2"></i>
+            Accessibility: Ensuring Equal Access
+          </h3>
+          <div class="bg-green-50 rounded-lg p-4 border border-green-100">
+            <ol class="text-left text-gray-700 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-green-200 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                <span><strong>Keyboard Navigation:</strong> All interactive elements can be accessed using keyboard-only controls with arrow key navigation and Enter/Space activation.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-green-200 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                <span><strong>Screen Reader Support:</strong> We include hidden complete text versions that only screen readers can access, ensuring visually impaired users get the full content.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-green-200 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                <span><strong>Reduced Motion Options:</strong> For users with vestibular disorders or motion sensitivity, all animations and movements can be disabled while maintaining functionality.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+        
+        <!-- Creative Disclaimer -->
+        <div class="bg-indigo-50 rounded-lg p-4 border border-indigo-100 mt-8">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-lightbulb text-indigo-500 text-xl"></i>
+            </div>
+            <div class="ml-3">
+              <h4 class="text-lg font-bold text-indigo-800">Creative Developer Note</h4>
+              <p class="text-gray-700">
+                These solutions were developed rapidly as proof-of-concept prototypes to address the growing challenge of AI-assisted cheating. Given more time and resources, we could create even more sophisticated systems with enhanced security, better UI/UX, and additional features like randomized question elements and dynamic challenge generation. We're passionate about finding innovative solutions to maintain academic integrity in the AI era.
+              </p>
+              <p class="text-sm text-indigo-800 mt-2 font-medium">— Krishna Teja GS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Visual Process Steps -->
+      <div class="mt-8 md:flex justify-between items-center">
+        <div class="how-it-works-step text-center mb-8 md:mb-0 flex-1">
+          <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-camera text-red-500"></i>
+          </div>
+          <p class="font-medium">Student takes screenshot</p>
+          <p class="text-sm text-gray-500">Critical values not captured</p>
+        </div>
+        <div class="how-it-works-step text-center mb-8 md:mb-0 flex-1">
+          <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-robot text-amber-500"></i>
+          </div>
+          <p class="font-medium">AI analyzes image</p>
+          <p class="text-sm text-gray-500">Lacks context to solve</p>
+        </div>
+        <div class="how-it-works-step text-center mb-8 md:mb-0 flex-1">
+          <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-shield-alt text-green-500"></i>
+          </div>
+          <p class="font-medium">Test integrity maintained</p>
+          <p class="text-sm text-gray-500">AI cannot provide answers</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-16 text-sm text-gray-500 max-w-4xl w-full">
+      <div class="border-t border-gray-200 pt-6 pb-4 flex flex-col md:flex-row justify-between items-center">
+        <p>Designed by Krishna Teja GS</p>
+        <p class="mt-2 md:mt-0">© 2025 | All Rights Reserved</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Particle config -->
+  <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize particles
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 30, density: { enable: true, value_area: 800 } },
+          color: { value: "#6366f1" }, // Indigo color
+          shape: { type: "circle" },
+          opacity: { value: 0.15, random: true },
+          size: { value: 3, random: true },
+          line_linked: { 
+            enable: true, 
+            distance: 150, 
+            color: "#6366f1", 
+            opacity: 0.1, 
+            width: 1 
+          },
+          move: { 
+            enable: true, 
+            speed: 1.2, 
+            direction: "none", 
+            random: true, 
+            out_mode: "out" 
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: { 
+            onhover: { enable: true, mode: "repulse" }, 
+            onclick: { enable: false }, 
+            resize: true 
+          },
+          modes: {
+            repulse: { distance: 100, duration: 0.4 }
+          }
+        },
+        retina_detect: true
+      });
+    });
+
+    // Disable particle hover effects for users who prefer reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTimeout(() => {
+        if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+          window.pJSDom[0].pJS.interactivity.events.onhover.enable = false;
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

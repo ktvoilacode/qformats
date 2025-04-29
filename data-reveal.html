@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Aptitude Question with Interactive Elements</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-10 font-sans">
+<div class="bg-white rounded-xl shadow-2xl w-full max-w-7xl transform transition duration-500 Click:-translate-y-1 Click:shadow-3xl p-6 md:p-8">
+<h1 id="quiz-title" class="text-2xl font-semibold py-2 mb-3">Data Reveal Question</h1>
+
+  <!-- Navigation Instructions Grid -->
+<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-md" aria-label="Navigation Instructions">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    
+    <!-- Mouse Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="mouse-pointer-click" class="h-5 w-5 text-yellow-600" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-yellow-800">Mouse Users</h3>
+        <p class="text-sm text-yellow-700 mt-1">Click over the <strong>"Click to reveal"</strong> buttons to see hidden values.</p>
+      </div>
+    </div>
+
+    <!-- Keyboard Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="keyboard" class="h-5 w-5 text-yellow-600" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-yellow-800">Keyboard Users</h3>
+        <ul class="text-sm text-yellow-700 mt-1 list-disc list-inside">
+          <li>Press <kbd class="px-1.5 py-0.5 bg-yellow-200 rounded font-mono text-xs">/</kbd> to focus the first button</li>
+          <li>Use <kbd class="px-1.5 py-0.5 bg-yellow-200 rounded font-mono text-xs">←</kbd> / <kbd class="px-1.5 py-0.5 bg-yellow-200 rounded font-mono text-xs">→</kbd> to move between buttons</li>
+          <li>Press <kbd class="px-1.5 py-0.5 bg-yellow-200 rounded font-mono text-xs">Enter</kbd> to reveal values</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screen Reader Instructions -->
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <i data-lucide="ear" class="h-5 w-5 text-yellow-600" aria-hidden="true"></i>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-yellow-800">Screen Reader Users</h3>
+        <p class="text-sm text-yellow-700 mt-1">The full question text with all values is provided in an accessible format for screen readers.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden full text for screen readers -->
+<div class="sr-only">
+  A car travels at a speed of 80 km/h for 4 hours and then continues its journey at a speed of 100 km/h for another 3 hours. The total distance traveled is 760 km. What is the total time taken for the journey?
+</div>
+
+<!-- Question Content -->
+<div class="relative mb-8">
+  <span class="absolute top-0 h-full w-1 bg-gray-300 rounded-full"></span>
+  <p class="text-2xl text-gray-700 leading-relaxed pl-6" aria-hidden="true">
+    A car travels at a speed of
+    <span class="group inline-block relative">
+      <button 
+        id="value-1" 
+        class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium border border-pink-200 transition-all duration-300 Click:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500" 
+        onclick="revealValue(1)" 
+        onkeydown="handleKeydown(event, 1)">
+        Click to reveal
+      </button>
+      <span id="tooltip-1" class="hidden absolute -top-12 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-pink-700 text-white text-sm rounded-lg transition-all duration-300 w-max">
+        80 km/h
+        <svg class="absolute text-pink-700 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"></polygon></svg>
+      </span>
+    </span>
+    for 4 hours and then continues its journey at a speed of
+    <span class="group inline-block relative">
+      <button 
+        id="value-2" 
+        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium border border-green-200 transition-all duration-300 Click:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-500" 
+        onclick="revealValue(2)" 
+        onkeydown="handleKeydown(event, 2)">
+        Click to reveal
+      </button>
+      <span id="tooltip-2" class="hidden absolute -top-12 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-green-700 text-white text-sm rounded-lg transition-all duration-300 w-max">
+        100 km/h
+        <svg class="absolute text-green-700 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"></polygon></svg>
+      </span>
+    </span>
+    for another 3 hours. The total distance traveled is
+    <span class="group inline-block relative">
+      <button 
+        id="value-3" 
+        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium border border-blue-200 transition-all duration-300 Click:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+        onclick="revealValue(3)" 
+        onkeydown="handleKeydown(event, 3)">
+        Click to reveal
+      </button>
+      <span id="tooltip-3" class="hidden absolute -top-12 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-blue-700 text-white text-sm rounded-lg transition-all duration-300 w-max">
+        760 km
+        <svg class="absolute text-blue-700 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"></polygon></svg>
+      </span>
+    </span>.
+    What is the total time taken for the journey?
+  </p>
+</div>
+
+<!-- Status indicator for screen readers -->
+<div id="status-indicator" class="sr-only" aria-live="polite"></div>
+
+<!-- Answer Options - Two Columns -->
+<div class="mt-8">
+  <h3 class="text-lg font-semibold text-gray-800 mb-4">Choose the correct option:</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3" role="radiogroup" aria-labelledby="answer-options">
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="5" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">5 hours</span>
+    </label>
+    
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="6" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">6 hours</span>
+    </label>
+    
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="7" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">7 hours</span>
+    </label>
+    
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="8" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">8 hours</span>
+    </label>
+    
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="9" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">9 hours</span>
+    </label>
+    
+    <label class="flex items-center p-3 rounded-lg border border-gray-200 cursor-pointer transition-all duration-300 Click:bg-indigo-50 Click:border-indigo-300 focus-within:ring-2 focus-within:ring-indigo-500">
+      <input type="radio" name="answer" value="10" class="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+      <span class="ml-3 text-gray-700">10 hours</span>
+    </label>
+  </div>
+</div>
+
+<!-- Feedback area -->
+<div id="feedback" class="mt-6 p-4 rounded-md hidden" aria-live="polite"></div>
+
+<!-- Submit button -->
+<div class="mt-6">
+  <button id="submit-answer" class="px-4 py-2 bg-indigo-600 text-white rounded-md Click:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+    Submit Answer
+  </button>
+  <a href="index.html">
+    <button  class="px-4 py-2 bg-pink-600 text-white rounded-md Click:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+      Back to home
+    </button>
+  </a>
+  
+</div>
+
+</div>
+
+<script>
+// Total number of hidden values
+const totalValues = 3;
+
+// Current focused value
+let currentValue = 1;
+
+// Value information
+const valueData = {
+1: { value: "80 km/h", description: "First value" },
+2: { value: "100 km/h", description: "Second value" },
+3: { value: "760 km", description: "Third value" }
+};
+
+// Set up keyboard shortcut to focus on the first hidden value
+document.addEventListener('keydown', function(e) {
+if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+e.preventDefault();
+document.getElementById('value-1').focus();
+updateStatus('Focused on first hidden value');
+}
+});
+
+// Handle keyboard navigation and reveal
+function handleKeydown(event, valueIndex) {
+// Update current element
+currentValue = valueIndex;
+
+// Play on Enter or Space - reveal value
+if (event.key === 'Enter' || event.key === ' ') {
+event.preventDefault();
+revealValue(valueIndex);
+}
+
+// Navigate with arrow keys
+if (event.key === 'ArrowLeft') {
+event.preventDefault();
+navigateValues('prev');
+} else if (event.key === 'ArrowRight') {
+event.preventDefault();
+navigateValues('next');
+}
+}
+
+// Navigate between hidden values
+function navigateValues(direction) {
+let newIndex;
+
+if (direction === 'next') {
+newIndex = currentValue < totalValues ? currentValue + 1 : 1;
+} else {
+newIndex = currentValue > 1 ? currentValue - 1 : totalValues;
+}
+
+// Update current element
+currentValue = newIndex;
+
+// Focus on the element
+document.getElementById(`value-${newIndex}`).focus();
+
+// Update status
+updateStatus(`Moved to ${valueData[newIndex].description}`);
+}
+
+// Show or hide the tooltip
+function revealValue(index) {
+// Close any open tooltips first
+closeAllTooltips();
+
+const tooltip = document.getElementById(`tooltip-${index}`);
+
+// Show tooltip
+tooltip.classList.remove('hidden');
+updateStatus(`Revealed: ${valueData[index].value}`);
+
+// Auto-hide after 2 seconds
+setTimeout(() => {
+tooltip.classList.add('hidden');
+updateStatus(`Value hidden`);
+}, 2000);
+}
+
+// Close all tooltips
+function closeAllTooltips() {
+for (let i = 1; i <= totalValues; i++) {
+const tooltip = document.getElementById(`tooltip-${i}`);
+tooltip.classList.add('hidden');
+}
+}
+
+// Update status for screen readers
+function updateStatus(message) {
+const statusElement = document.getElementById('status-indicator');
+statusElement.textContent = message;
+}
+
+// Handle submit button
+document.getElementById('submit-answer').addEventListener('click', function() {
+const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+const feedbackArea = document.getElementById('feedback');
+
+if (!selectedAnswer) {
+feedbackArea.textContent = 'Please select an answer before submitting.';
+feedbackArea.classList.remove('hidden', 'bg-green-50');
+feedbackArea.classList.add('bg-red-50', 'border-l-4', 'border-red-400', 'text-red-700');
+updateStatus('Please select an answer before submitting.');
+return;
+}
+
+// Check if answer is correct (7 hours is the correct answer for this problem)
+const isCorrect = selectedAnswer.value === '7';
+
+if (isCorrect) {
+feedbackArea.textContent = 'Correct! Well done!';
+feedbackArea.classList.remove('hidden', 'bg-red-50');
+feedbackArea.classList.add('bg-green-50', 'border-l-4', 'border-green-400', 'text-green-700');
+updateStatus('Correct! Well done!');
+} else {
+feedbackArea.textContent = 'Incorrect. Try again.';
+feedbackArea.classList.remove('hidden', 'bg-green-50');
+feedbackArea.classList.add('bg-red-50', 'border-l-4', 'border-red-400', 'text-red-700');
+updateStatus('Incorrect. Try again.');
+}
+});
+
+// Initialize Lucide icons
+if (typeof lucide !== 'undefined') {
+lucide.createIcons();
+}
+</script>
+</body>
+</html>
